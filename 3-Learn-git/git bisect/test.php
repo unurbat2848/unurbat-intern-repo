@@ -1,7 +1,8 @@
 <?php
 // Simple function to add two variables and return the sum
 function add($a, $b) {
-    return $a + $b;
+    // Bug introduced: should be $a + $b
+    return $a - $b;
 }
 
 // Example usage
