@@ -1,10 +1,19 @@
 ## Why do you think Focus Bear was created?
+
 When I looked the focusbear website there mentioned about founder was ADHD and he builds that system to help for self and other people with has same issue. I think it is really important to know what is the key problem for people who have ADHD.
+
 ## What problem is Focus Bear solving?
-Nowadays many poeple becoming ADHD because of the technology rapidly developing and smart phone usage is increased. Because of that even children can't focus one thing long time. For example now children don't like to watch long cartoons they easily distracted and hard to focus. So I believe focus bear will help to individuals to make healthy habbit. 
+
+Nowadays many poeple becoming ADHD because of the technology rapidly developing and smart phone usage is increased. Because of that even children can't focus one thing long time. For example now children don't like to watch long cartoons they easily distracted and hard to focus. So I believe focus bear will help to individuals to make healthy habbit.
+
 ## Why do you think this mission is important?
+
 Yes, it is really important I saw one statistical information on onboarding documentation, about ADHD people 40% less productive to comparing other people and 12% tend to drop off university. That is the really big issue for young generation and focus bear application is can be one of the solution to fight this issue.
+
 ## How does Focus Bear’s work align with your personal values or interests?
+
 I belive that technology can solve many problems currently human facing. Previous semister I build mobile app for elder people who has suffering dementia, that was really good experience for me and focus bear also same application to helping people to focus. So I think it's really exciting to contribute to its development and see how it can positively impact others.
+
 ## Do you personally relate to any of the challenges that Focus Bear aims to solve?
-I sometimes get really distracted by social apps Facebook and YouTube. For example, when I open Facebook just to reply to a message, but then I find myself scrolling through my feed or watching videos on YouTube, and suddenly an hour is gone. So I believe these type of applications can help to make balance in social media. Also I think one possible idea is if there has function to notify when user spend more time on social media. 
+
+I sometimes get really distracted by social apps Facebook and YouTube. For example, when I open Facebook just to reply to a message, but then I find myself scrolling through my feed or watching videos on YouTube, and suddenly an hour is gone. So I believe these type of applications can help to make balance in social media. Also I think one possible idea is if there has function to notify when user spend more time on social media.

@@ -1,4 +1,5 @@
-#  Understanding Clean Code Principles
+# Understanding Clean Code Principles
+
 ## Clean Code Principles
 
 **Simplicity** – Code should be as simple as possible. Avoid adding unnecessary complexity or features you don't need. Simple code is easier to understand, test, and maintain.
@@ -10,7 +11,6 @@
 **Consistency** – Follow the same style and conventions throughout your codebase. Consistent code is easier to read and reduces confusion, especially when working in a team.
 
 **Efficiency** – Write code that runs well and uses resources wisely, but don't over-optimize too early. Focus on making your code work first, then improve performance only if it's really needed.
-
 
 ## Find an example of messy code online (or write one yourself) and describe why it's difficult to read.
 
@@ -24,7 +24,6 @@ def a(x,y):z=0
 ```
 
 This code is hard to read because the function and variable names are not descriptive, the formatting is inconsistent, and everything is crammed into one line. It's not clear what the function is supposed to do, and it's easy to make mistakes or miss bugs in code like this.
-
 
 ## Rewrite the code in a cleaner, more structured way.
 
@@ -44,5 +43,3 @@ print(result)
 ```
 
 This version uses clear function and variable names, proper indentation, and includes an example of how to use the function. It's much easier to read and understand what the code is doing.
-
-
