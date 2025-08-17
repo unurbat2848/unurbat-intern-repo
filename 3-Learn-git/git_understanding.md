@@ -12,3 +12,6 @@ When creating a new branch, it allows you to see all file changes. For example, 
 Using branches allows your teammates to review the code and provide feedback before merging it into the main branch. This practice improves code quality and helps prevent conflicts.
 ## What happens if two people edit the same file on different branches?
 When multiple people work on the same file, conflicts are likely to occur. To resolve these conflicts, developers need to communicate frequently. The team should push their changes one at a time, and other members should pull the latest changes into their code to resolve any conflicts.
+
+
+Other changes
