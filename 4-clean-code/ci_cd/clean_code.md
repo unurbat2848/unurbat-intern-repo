@@ -21,3 +21,19 @@ Then I configured lit-staged in my packege.json
 
 After configured husky it run and checked all my test files after when I create commit 
 ![alt text](image-4.png)
+
+Then I pushed all my changes to new branch and github workflow checked all spelling and lint issue 
+![alt text](image-5.png)
+# CI/CD Reflections
+
+**What is the purpose of CI/CD?**
+The purpose of CI/CD is to automate the process of building, testing, and deploying code so that changes can be delivered quickly and reliably. It helps catch issues early, ensures code quality, and makes it easier to release new features or fixes without manual steps.
+
+**How does automating style checks improve project quality?**
+Automating style checks ensures that all code follows the same standards, which makes the codebase more consistent and easier to read. It also helps catch errors and bad practices before they make it into the main branch, reducing bugs and technical debt.
+
+**What are some challenges with enforcing checks in CI/CD?**
+Some challenges include configuring the tools correctly, dealing with false positives or overly strict rules, and making sure all contributors have the same setup. Sometimes, checks can slow down the workflow if they take too long or block progress for minor issues.
+
+**How do CI/CD pipelines differ between small projects and large teams?**
+In small projects, CI/CD pipelines are usually simpler and faster, with fewer checks and steps. In large teams, pipelines can be more complex, with multiple stages, parallel jobs, and stricter requirements to handle more contributors and ensure high code quality across the whole team.
