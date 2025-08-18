@@ -1,0 +1,32 @@
+# This workflow lints and spell checks Markdown files on pull requests
+name: Lint and Spell Check Markdown
+
+# Trigger the workflow on pull requests that modify Markdown files
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+
+jobs:
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out the repository code
+      - uses: actions/checkout@v4
+      # Run Markdown linting on all Markdown files
+      - name: Run Markdown Lint
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: "**/*.md"
+
+  spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out the repository code
+      - uses: actions/checkout@v4
+      # Run spell check on all Markdown files using the provided config
+      - name: Spell Check Markdown
+        uses: rojopolis/spellcheck-github-actions@0.36.0
+        with:
+          config_path: .spellcheck.yml
+          source_files: "**/*.md"
