@@ -1,19 +1,23 @@
-// example of poorly named variables?
+// refactored version with better variable names
 
-function x(a, b) {
-    let c = 0;
-    for (let i = 0; i < a.length; i++) {
-        if (a[i] > b) {
-            c += a[i];
+// now the function is clearer and more maintainable. Other developers can easily understand the purpose of each variable.
+
+// what other names could we use?
+
+function processArray(inputArray, threshold) {
+    let sumAboveThreshold = 0;
+    for (let i = 0; i < inputArray.length; i++) {
+        if (inputArray[i] > threshold) {
+            sumAboveThreshold += inputArray[i];
         }
     }
-    let d = [];
-    for (let j = 0; j < a.length; j++) {
-        if (a[j] % 2 === 0) {
-            d.push(a[j]);
+    let evenNumbers = [];
+    for (let j = 0; j < inputArray.length; j++) {
+        if (inputArray[j] % 2 === 0) {
+            evenNumbers.push(inputArray[j]);
         }
     }
-    let e = d.map(f => f * 2);
-    return {c, e};
+    let doubledEvenNumbers = evenNumbers.map(num => num * 2);
+    return { sumAboveThreshold, doubledEvenNumbers };
 
 }
