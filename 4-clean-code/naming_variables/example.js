@@ -1,5 +1,9 @@
 // refactored version with better variable names
 
+// now the function is clearer and more maintainable. Other developers can easily understand the purpose of each variable.
+
+// what other names could we use?
+
 function processArray(inputArray, threshold) {
     let sumAboveThreshold = 0;
     for (let i = 0; i < inputArray.length; i++) {
