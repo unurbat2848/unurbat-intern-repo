@@ -12,7 +12,7 @@
 
 3. I connected to PostgreSQL using a following command: 
 
-
+![alt text](image-2.png)
 
 4. **How volumes persist PostgreSQL data:**
 The `volumes` section in the compose file creates a named volume (`pgdata`). This means all the database files are stored outside the container. If I stop, remove, or recreate the container, my data is still safe in the volume. Only if I delete the volume itself will the data be lost. This is the best way to make sure my database data survives container restarts or upgrades.
