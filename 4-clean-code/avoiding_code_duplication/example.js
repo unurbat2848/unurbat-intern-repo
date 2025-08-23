@@ -1,15 +1,17 @@
-// Example of Duplicated Code and DRY Refactor
+// Refactoring Duplicated Code and following DRY
 
-function calculateDiscount(price, discount) {
-    if (typeof price !== 'number' || typeof discount !== 'number') {
+function validateNumbers(...args) {
+    if (!args.every(arg => typeof arg === 'number')) {
         throw new Error('Invalid input');
     }
+}
+
+function calculateDiscount(price, discount) {
+    validateNumbers(price, discount);
     return price - (price * discount);
 }
 
 function calculateTax(price, taxRate) {
-    if (typeof price !== 'number' || typeof taxRate !== 'number') {
-        throw new Error('Invalid input');
-    }
+    validateNumbers(price, taxRate);
     return price + (price * taxRate);
 }
