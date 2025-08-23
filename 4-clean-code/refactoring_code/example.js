@@ -1,6 +1,6 @@
 // example of overly complicated code
 
-function getTotal(items) {
+function total(items) {
   let t = 0;
   for (let i = 0; i < items.length; i++) {
     if (
@@ -17,4 +17,17 @@ function getTotal(items) {
     }
   }
   return t;
+}
+
+
+// Refactored, Simpler Version
+function getTotal(items) {
+  return items.reduce((total, item) => {
+    if (typeof item === "object" && item !== null && "price" in item && "qty" in item) {
+      return total + item.price * item.qty;
+    } else if (typeof item === "number") {
+      return total + item;
+    }
+    return total; // skip invalid
+  }, 0);
 }
