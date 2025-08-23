@@ -1,22 +1,15 @@
-// example of overly complicated code
+// code refactoring example
 
-function total(items) {
-  let t = 0;
-  for (let i = 0; i < items.length; i++) {
-    if (
-      typeof items[i] === "object" &&
-      items[i] !== null &&
-      "price" in items[i] &&
-      "qty" in items[i]
-    ) {
-      t = t + items[i].price * items[i].qty;
-    } else if (typeof items[i] === "number") {
-      t = t + items[i];
-    } else {
-      // skip invalid
+function getTotal(items) {
+  return items.reduce((total, item) => {
+    if (typeof item === "number") {
+      return total + item;
     }
-  }
-  return t;
+    if (item && typeof item === "object" && "price" in item && "qty" in item) {
+      return total + item.price * item.qty;
+    }
+    return total;
+  }, 0);
 }
 
 
