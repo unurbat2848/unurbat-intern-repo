@@ -15,3 +15,8 @@ NestJS has a built-in dependency injection system inspired by Angular. I can mar
 ## What benefits does modular architecture provide in a large-scale app?
 
 Modular architecture in NestJS means I can split my app into self-contained modules, each responsible for a specific feature or domain. This makes the codebase easier to organize, test, and maintain. In large-scale apps, modules help teams work independently, reduce code conflicts, and make it simpler to add or remove features without breaking everything else.
+
+For example 
+- In an e-commerce app, we might have separate modules for users, products, orders, and payments. Each module contains its own controllers, services, and entities.
+
+This modular approach allows us to develop, test, and deploy features independently, and even reuse modules across different projects.
