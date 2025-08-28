@@ -3,10 +3,11 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { EmailService } from './email.service';
 import { LoggerService } from './logger.service';
+import { ProductsModule } from './products/products.module';
 
 // Module that registers all providers and controllers
 @Module({
-  imports: [],
+  imports: [ProductsModule],
   controllers: [UserController],
   providers: [
     UserService,    // SINGLETON scope (default)
