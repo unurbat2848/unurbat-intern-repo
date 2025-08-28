@@ -16,6 +16,6 @@ export default defineConfig([
       indent: ["error", 2],
     },
   },
-  tseslint.configs.recommended,
+  
   pluginReact.configs.flat.recommended,
 ]);
