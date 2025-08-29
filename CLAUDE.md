@@ -32,11 +32,12 @@ The codebase is organized into numbered learning modules:
 - `4-clean-code/` - Clean coding principles with practical examples
 - `5-docker/` - Docker containerization and PostgreSQL setup
 - `6-nestjs-basic/` - NestJS framework introduction and architecture
+- `7-building-APIs/` - Creating REST APIs with NestJS
 
 Each module contains:
 - Reflection markdown files documenting learning outcomes
 - Code examples demonstrating concepts
-- Screenshots showing implementation proof
+- Create Screenshot folder inside ticket and add instructions to what files and actions needs to sceenshot and where to put that screenshot
 - Practice exercises and implementations
 
 ## Architecture Notes
@@ -71,7 +72,7 @@ GitHub Issues represent learning tasks with:
 - each issue should be create folder by issue name inside milestone folder
 - Mention where to puth what's screenshot
 - create demo nestjs project if not exist in and create example code if requires some example
-- demo project should only one for all issues
+- demo project should only one for all issue
 
 When working on issues, create the reflection markdown file specified in the issue description and ensure all task requirements are completed before marking as done. I need you to act as a student and explain a technical concept in a way that sounds natural, not like an AI. Your tone should be similar to how a student would talk about what they've learned after class. Do not use overly complex or formal language. Avoid typical AI-generated phrases like "in conclusion," "in this article," "it is important to note," or "delve into." Use a conversational tone with relatable analogies. Structure your answer in a clear, easy-to-read way. Make sure your explanation is easy enough for someone in 7th grade to understand. Should answer only reflection questions based on task completion results. 
 
