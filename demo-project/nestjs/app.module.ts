@@ -1,6 +1,8 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BullModule } from '@nestjs/bullmq';
+import { ConfigModule } from './config/config.module';
+import { ConfigService } from '@nestjs/config';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { EmailService } from './email.service';
@@ -16,21 +18,30 @@ import { SecurityMiddleware } from './middleware/security.middleware';
 // Module that registers all providers and controllers
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT || '5432', 10),
-      username: process.env.DB_USERNAME || 'myuser',
-      password: process.env.DB_PASSWORD || 'password',
-      database: process.env.DB_NAME || 'mydatabase',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false, // Disabled to use migrations
+    ConfigModule,
+    TypeOrmModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get<string>('database.host'),
+        port: configService.get<number>('database.port'),
+        username: configService.get<string>('database.username'),
+        password: configService.get<string>('database.password'),
+        database: configService.get<string>('database.database'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: configService.get<boolean>('database.synchronize'),
+        logging: configService.get<boolean>('database.logging'),
+      }),
+      inject: [ConfigService],
     }),
-    BullModule.forRoot({
-      connection: {
-        host: process.env.REDIS_HOST || 'localhost',
-        port: parseInt(process.env.REDIS_PORT || '6379', 10),
-      },
+    BullModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        connection: {
+          host: configService.get<string>('redis.host'),
+          port: configService.get<number>('redis.port'),
+          password: configService.get<string>('redis.password'),
+        },
+      }),
+      inject: [ConfigService],
     }),
     ProductsModule,
     UsersModule,

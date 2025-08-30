@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
+import { ConfigService } from '@nestjs/config';
 import { Role } from './roles.enum';
 
 export interface JwtPayload {
@@ -23,11 +24,11 @@ export interface AuthenticatedUser {
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  constructor(private configService: ConfigService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_SECRET || 'demo-secret-key',
+      secretOrKey: configService.get<string>('auth.jwt.secret') || 'fallback-secret',
       // In production, you would use Auth0's JWKS endpoint:
       // secretOrKeyProvider: passportJwtSecret({
       //   cache: true,
