@@ -4,8 +4,8 @@ services:
     image: postgres:latest
     container_name: my-postgres-compose
     environment:
-      POSTGRES_PASSWORD: 123456
-      POSTGRES_USER: myuser 
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: myuser
       POSTGRES_DB: mydatabase
     ports:
       - "5432:5432"
