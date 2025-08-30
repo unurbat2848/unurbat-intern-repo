@@ -1,15 +1,30 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { EmailService } from './email.service';
 import { LoggerService } from './logger.service';
 import { ProductsModule } from './products/products.module';
+import { UsersModule } from './users/users.module';
 import { RequestIdMiddleware } from './middleware/request-id.middleware';
 import { SecurityMiddleware } from './middleware/security.middleware';
 
 // Module that registers all providers and controllers
 @Module({
-  imports: [ProductsModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DB_HOST || 'postgres',
+      port: parseInt(process.env.DB_PORT || '5432', 10),
+      username: process.env.DB_USERNAME || 'nestuser',
+      password: process.env.DB_PASSWORD || 'nestpass',
+      database: process.env.DB_NAME || 'nestdb',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true, // Only for development - auto creates tables
+    }),
+    ProductsModule,
+    UsersModule
+  ],
   controllers: [UserController],
   providers: [
     UserService,    // SINGLETON scope (default)
