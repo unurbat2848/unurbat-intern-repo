@@ -9,6 +9,7 @@ import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 import { SeedModule } from './seeding/seed.module';
 import { JobsModule } from './jobs/jobs.module';
+import { AuthModule } from './auth/auth.module';
 import { RequestIdMiddleware } from './middleware/request-id.middleware';
 import { SecurityMiddleware } from './middleware/security.middleware';
 
@@ -20,7 +21,7 @@ import { SecurityMiddleware } from './middleware/security.middleware';
       host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT || '5432', 10),
       username: process.env.DB_USERNAME || 'myuser',
-      password: process.env.DB_PASSWORD || '123456',
+      password: process.env.DB_PASSWORD || 'password',
       database: process.env.DB_NAME || 'mydatabase',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false, // Disabled to use migrations
@@ -34,7 +35,8 @@ import { SecurityMiddleware } from './middleware/security.middleware';
     ProductsModule,
     UsersModule,
     SeedModule,
-    JobsModule
+    JobsModule,
+    AuthModule
   ],
   controllers: [UserController],
   providers: [
