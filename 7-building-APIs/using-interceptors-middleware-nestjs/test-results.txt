@@ -1,0 +1,92 @@
+# Interceptors & Middleware Testing Results
+
+## API Base URL: http://localhost:3002/api
+
+### 1. Middleware Testing - Security and Request ID
+**Request:** GET /api/products
+**Headers Added:**
+- X-Content-Type-Options: nosniff
+- X-Frame-Options: DENY  
+- X-XSS-Protection: 1; mode=block
+- Referrer-Policy: strict-origin-when-cross-origin
+- API-Version: 1.0
+- X-Request-ID: 77b7251f (generated UUID)
+
+**Server Logs:**
+- 🛡️ Security headers added for GET /
+- 🆔 Request ID assigned: 77b7251f for GET /
+
+**Status:** ✅ SUCCESS - Both middleware functions executed
+
+### 2. Interceptors Testing - Logging and Response Transform
+**Request:** GET /api/products  
+**Response Transformation:** Original array wrapped with metadata
+```json
+{
+  "success": true,
+  "timestamp": "2025-08-29T06:39:30.715Z",
+  "path": "/api/products", 
+  "method": "GET",
+  "data": [original response data],
+  "requestId": "77b7251f"
+}
+```
+
+**Server Logs:**
+- 📥 Incoming Request: GET /api/products - curl/7.79.1
+- 📤 Outgoing Response: GET /api/products - Status: 200 - Duration: 3ms
+- 📋 Response Data: [transformed response logged]
+
+**Status:** ✅ SUCCESS - LoggingInterceptor and ResponseTransformInterceptor working
+
+### 3. Cache Interceptor Testing
+**First Request:** GET /api/products
+- Server Log: 🔄 Cache MISS for GET:/api/products
+- Duration: 3ms
+
+**Second Request:** GET /api/products (immediate)
+- Server Log: 💾 Cache HIT for GET:/api/products  
+- Duration: 1ms
+
+**After 30 seconds:**
+- Server Log: 🗑️ Cache expired for GET:/api/products
+
+**Status:** ✅ SUCCESS - CacheInterceptor caching and expiring correctly
+
+### 4. Error Handling Interceptor Testing
+**Request:** GET /api/products/999 (non-existent)
+**Response:** 
+```json
+{"statusCode":404,"message":"Product not found"}
+```
+
+**Server Logs:**
+- ❌ Error in GET /api/products/999 - Request ID: fde4f09d
+- Full error stack trace logged
+
+**Status:** ✅ SUCCESS - ErrorHandlingInterceptor catching and logging errors
+
+### 5. POST Request with Request Body Logging
+**Request:** POST /api/products
+**Body:** {"name":"Test Interceptors","price":99.99,"description":"Testing middleware and interceptors"}
+
+**Server Logs:**
+- 📥 Incoming Request: POST /api/products - curl/7.79.1
+- 📦 Request Body: [body content logged]
+- 📤 Outgoing Response: POST /api/products - Status: 201 - Duration: 3ms
+
+**Status:** ✅ SUCCESS - Request body logging working
+
+## Summary of Features Tested:
+- ✅ SecurityMiddleware (adding security headers)
+- ✅ RequestIdMiddleware (generating unique request IDs)
+- ✅ LoggingInterceptor (request/response logging with timing)
+- ✅ ResponseTransformInterceptor (wrapping responses with metadata)
+- ✅ ErrorHandlingInterceptor (catching and logging errors)
+- ✅ CacheInterceptor (caching GET requests for 30 seconds)
+- ✅ Global interceptor application (applied to all routes)
+- ✅ Method-specific interceptor application (CacheInterceptor only on GET /products)
+- ✅ Middleware execution order (Security → RequestId → Interceptors)
+- ✅ Interceptor execution order (Error → Logging → Response Transform)
+
+All interceptors and middleware are functioning correctly with proper logging and error handling!

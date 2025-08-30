@@ -1,6 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './nestjs/app.module';
+import { LoggingInterceptor } from './nestjs/interceptors/logging.interceptor';
+import { ResponseTransformInterceptor } from './nestjs/interceptors/response-transform.interceptor';
+import { ErrorHandlingInterceptor } from './nestjs/interceptors/error-handling.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +20,13 @@ async function bootstrap() {
     forbidNonWhitelisted: true, // Throw error for extra properties
     transform: true, // Auto-transform request objects to DTO instances
   }));
+  
+  // Apply global interceptors (order matters!)
+  app.useGlobalInterceptors(
+    new ErrorHandlingInterceptor(), // Should be first to catch all errors
+    new LoggingInterceptor(),       // Log requests and responses
+    new ResponseTransformInterceptor() // Transform response format (should be last)
+  );
   
   const port = process.env.PORT || 3000;
   await app.listen(port);
