@@ -6,6 +6,7 @@ import { EmailService } from './email.service';
 import { LoggerService } from './logger.service';
 import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
+import { SeedModule } from './seeding/seed.module';
 import { RequestIdMiddleware } from './middleware/request-id.middleware';
 import { SecurityMiddleware } from './middleware/security.middleware';
 
@@ -20,10 +21,11 @@ import { SecurityMiddleware } from './middleware/security.middleware';
       password: process.env.DB_PASSWORD || 'nestpass',
       database: process.env.DB_NAME || 'nestdb',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true, // Only for development - auto creates tables
+      synchronize: false, // Disabled to use migrations
     }),
     ProductsModule,
-    UsersModule
+    UsersModule,
+    SeedModule
   ],
   controllers: [UserController],
   providers: [

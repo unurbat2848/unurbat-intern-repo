@@ -7,7 +7,13 @@
     "build": "tsc",
     "start": "node dist/main.js",
     "start:dev": "ts-node main.ts",
-    "start:prod": "node dist/main.js"
+    "start:prod": "node dist/main.js",
+    "typeorm": "typeorm-ts-node-commonjs -d ormconfig.js",
+    "migration:generate": "npm run typeorm -- migration:generate",
+    "migration:run": "npm run typeorm -- migration:run",
+    "migration:revert": "npm run typeorm -- migration:revert",
+    "migration:show": "npm run typeorm -- migration:show",
+    "seed": "ts-node scripts/seed.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -20,13 +26,13 @@
     "pg": "^8.16.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
-    "typeorm": "^0.3.26",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/uuid": "^10.0.0",
     "ts-node": "^10.9.0",
+    "typeorm": "^0.3.26",
     "typescript": "^5.0.0"
   }
 }
