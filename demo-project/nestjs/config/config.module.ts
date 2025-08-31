@@ -10,6 +10,7 @@ import databaseConfig from './database.config';
 import redisConfig from './redis.config';
 import authConfig from './auth.config';
 import externalApisConfig from './external-apis.config';
+import encryptionConfig from './encryption.config';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import externalApisConfig from './external-apis.config';
         redisConfig,
         authConfig,
         externalApisConfig,
+        encryptionConfig,
       ],
       
       // Environment-specific .env files

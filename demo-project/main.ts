@@ -1,18 +1,25 @@
+// Load environment variables first, before any other imports
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+// Debug: Check if environment variables are loaded
+console.log('🔑 ENCRYPTION_KEY loaded:', process.env.ENCRYPTION_KEY ? `Yes (${process.env.ENCRYPTION_KEY.length} chars)` : 'No');
+
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-import { Logger } from 'nestjs-pino';
+// import { Logger } from 'nestjs-pino'; // Temporarily disabled
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { AppModule } from './nestjs/app.module';
-import { LoggingInterceptor } from './nestjs/interceptors/logging.interceptor';
-import { ResponseTransformInterceptor } from './nestjs/interceptors/response-transform.interceptor';
-import { ErrorHandlingInterceptor } from './nestjs/interceptors/error-handling.interceptor';
+// import { LoggingInterceptor } from './nestjs/interceptors/logging.interceptor';
+// import { ResponseTransformInterceptor } from './nestjs/interceptors/response-transform.interceptor';
+// import { ErrorHandlingInterceptor } from './nestjs/interceptors/error-handling.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
   
-  // Use Pino logger
-  app.useLogger(app.get(Logger));
+  // Use Pino logger - temporarily disabled
+  // app.useLogger(app.get(Logger));
   
   // Security Middleware - Helmet for security headers
   app.use(helmet({
@@ -56,17 +63,16 @@ async function bootstrap() {
     transform: true, // Auto-transform request objects to DTO instances
   }));
   
-  // Apply global interceptors (order matters!)
-  app.useGlobalInterceptors(
-    new ErrorHandlingInterceptor(), // Should be first to catch all errors
-    new LoggingInterceptor(),       // Log requests and responses
-    new ResponseTransformInterceptor() // Transform response format (should be last)
-  );
+  // Apply global interceptors (order matters!) - temporarily disabled
+  // app.useGlobalInterceptors(
+  //   new ErrorHandlingInterceptor(), // Should be first to catch all errors
+  //   new LoggingInterceptor(),       // Log requests and responses
+  //   new ResponseTransformInterceptor() // Transform response format (should be last)
+  // );
   
   const port = process.env.PORT || 3000;
   await app.listen(port);
   
-  const logger = app.get(Logger);
-  logger.log(`🚀 NestJS app is running on: http://localhost:${port}/api`);
+  console.log(`🚀 NestJS app is running on: http://localhost:${port}/api`);
 }
 bootstrap();

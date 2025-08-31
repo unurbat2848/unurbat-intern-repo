@@ -15,7 +15,7 @@ export class SecurityMiddleware implements NestMiddleware {
     // Add API versioning header
     res.setHeader('API-Version', '1.0');
     
-    this.logger.log(`🛡️ Security headers added for ${req.method} ${req.url}`);
+    // this.logger.log(`🛡️ Security headers added for ${req.method} ${req.url}`); // Temporarily disabled due to Pino logger issues
     
     next();
   }

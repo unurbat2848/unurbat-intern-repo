@@ -41,7 +41,7 @@ This keeps my server running smooth and stops bad actors from causing trouble. N
 
 The biggest rule I learned is **never put secrets in your code**! I always use environment variables for things like database passwords and API keys.
 
-For the demo project, I saw how the existing SECURITY.md file shows the right way to handle secrets. The main things I need to remember:
+For the demo project, I created a SECURITY.md file and mentioned the right way to handle secrets. The main things I need to remember:
 
 **Keep secrets out of git** - My `.env` file should never be committed. Only `.env.example` with fake values goes in git.
 

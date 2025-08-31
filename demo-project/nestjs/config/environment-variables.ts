@@ -57,6 +57,10 @@ export class EnvironmentVariables {
   @IsString()
   JWT_EXPIRES_IN?: string = '24h';
 
+  // Encryption
+  @IsString()
+  ENCRYPTION_KEY: string;
+
   // Auth0 (optional)
   @IsOptional()
   @IsString()

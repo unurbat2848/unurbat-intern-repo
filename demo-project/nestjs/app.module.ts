@@ -1,7 +1,7 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { APP_FILTER } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BullModule } from '@nestjs/bullmq';
+// import { BullModule } from '@nestjs/bullmq'; // Temporarily disabled
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from '@nestjs/config';
 import { LoggingModule } from './logging/logging.module';
@@ -9,11 +9,13 @@ import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { AllExceptionsFilter } from './filters/all-exceptions.filter';
 import { UserController } from './user.controller';
 import { SecurityController } from './controllers/security.controller';
+import { EncryptionTestController } from './controllers/encryption-test.controller';
 import { UserService } from './user.service';
 import { EmailService } from './email.service';
 import { LoggerService } from './logger.service';
 import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
+import { User } from './users/user.entity';
 import { SeedModule } from './seeding/seed.module';
 import { JobsModule } from './jobs/jobs.module';
 import { AuthModule } from './auth/auth.module';
@@ -38,38 +40,39 @@ import { SecurityMiddleware } from './middleware/security.middleware';
       }),
       inject: [ConfigService],
     }),
-    BullModule.forRootAsync({
-      useFactory: (configService: ConfigService) => ({
-        connection: {
-          host: configService.get<string>('redis.host'),
-          port: configService.get<number>('redis.port'),
-          password: configService.get<string>('redis.password'),
-        },
-      }),
-      inject: [ConfigService],
-    }),
-    LoggingModule,
+    TypeOrmModule.forFeature([User]),
+    // BullModule.forRootAsync({
+    //   useFactory: (configService: ConfigService) => ({
+    //     connection: {
+    //       host: configService.get<string>('redis.host'),
+    //       port: configService.get<number>('redis.port'),
+    //       password: configService.get<string>('redis.password'),
+    //     },
+    //   }),
+    //   inject: [ConfigService],
+    // }),
+    // LoggingModule, // Temporarily disabled
     ProductsModule,
     UsersModule,
-    SeedModule,
-    JobsModule,
-    AuthModule
+    // SeedModule, // Temporarily disabled
+    // JobsModule, // Temporarily disabled (depends on BullMQ)
+    // AuthModule // Temporarily disabled
   ],
-  controllers: [UserController, SecurityController],
+  controllers: [UserController, SecurityController, EncryptionTestController],
   providers: [
     UserService,    // SINGLETON scope (default)
     EmailService,   // REQUEST scope
     LoggerService,  // TRANSIENT scope
     
-    // Global exception filters
-    {
-      provide: APP_FILTER,
-      useClass: AllExceptionsFilter,
-    },
-    {
-      provide: APP_FILTER,
-      useClass: HttpExceptionFilter,
-    },
+    // Global exception filters - temporarily disabled
+    // {
+    //   provide: APP_FILTER,
+    //   useClass: AllExceptionsFilter,
+    // },
+    // {
+    //   provide: APP_FILTER,
+    //   useClass: HttpExceptionFilter,
+    // },
   ],
 })
 export class AppModule implements NestModule {

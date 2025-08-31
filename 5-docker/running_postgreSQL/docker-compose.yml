@@ -4,13 +4,10 @@ services:
     image: postgres:latest
     container_name: my-postgres-compose
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: myuser
-      POSTGRES_DB: mydatabase
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: root
+      POSTGRES_DB: demo
     ports:
       - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
 
-volumes:
-  pgdata:
+
