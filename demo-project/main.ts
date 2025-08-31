@@ -1,12 +1,16 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
+import { Logger } from 'nestjs-pino';
 import { AppModule } from './nestjs/app.module';
 import { LoggingInterceptor } from './nestjs/interceptors/logging.interceptor';
 import { ResponseTransformInterceptor } from './nestjs/interceptors/response-transform.interceptor';
 import { ErrorHandlingInterceptor } from './nestjs/interceptors/error-handling.interceptor';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  
+  // Use Pino logger
+  app.useLogger(app.get(Logger));
   
   // Enable CORS for development
   app.enableCors();
@@ -31,6 +35,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3000;
   await app.listen(port);
   
-  console.log(`🚀 NestJS app is running on: http://localhost:${port}/api`);
+  const logger = app.get(Logger);
+  logger.log(`🚀 NestJS app is running on: http://localhost:${port}/api`);
 }
 bootstrap();

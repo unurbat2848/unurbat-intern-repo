@@ -1,8 +1,12 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { APP_FILTER } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BullModule } from '@nestjs/bullmq';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from '@nestjs/config';
+import { LoggingModule } from './logging/logging.module';
+import { HttpExceptionFilter } from './filters/http-exception.filter';
+import { AllExceptionsFilter } from './filters/all-exceptions.filter';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { EmailService } from './email.service';
@@ -43,6 +47,7 @@ import { SecurityMiddleware } from './middleware/security.middleware';
       }),
       inject: [ConfigService],
     }),
+    LoggingModule,
     ProductsModule,
     UsersModule,
     SeedModule,
@@ -54,6 +59,16 @@ import { SecurityMiddleware } from './middleware/security.middleware';
     UserService,    // SINGLETON scope (default)
     EmailService,   // REQUEST scope
     LoggerService,  // TRANSIENT scope
+    
+    // Global exception filters
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
   ],
 })
 export class AppModule implements NestModule {
