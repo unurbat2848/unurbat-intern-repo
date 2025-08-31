@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { Logger } from 'nestjs-pino';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import { AppModule } from './nestjs/app.module';
 import { LoggingInterceptor } from './nestjs/interceptors/logging.interceptor';
 import { ResponseTransformInterceptor } from './nestjs/interceptors/response-transform.interceptor';
@@ -11,6 +13,35 @@ async function bootstrap() {
   
   // Use Pino logger
   app.useLogger(app.get(Logger));
+  
+  // Security Middleware - Helmet for security headers
+  app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'"],
+        imgSrc: ["'self'", "data:", "https:"],
+      },
+    },
+    hsts: {
+      maxAge: 31536000, // 1 year
+      includeSubDomains: true,
+      preload: true
+    }
+  }));
+  
+  // Rate limiting to prevent abuse
+  app.use(rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: {
+      error: 'Too many requests from this IP, please try again later.',
+      statusCode: 429
+    },
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  }));
   
   // Enable CORS for development
   app.enableCors();

@@ -8,6 +8,7 @@ import { LoggingModule } from './logging/logging.module';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { AllExceptionsFilter } from './filters/all-exceptions.filter';
 import { UserController } from './user.controller';
+import { SecurityController } from './controllers/security.controller';
 import { UserService } from './user.service';
 import { EmailService } from './email.service';
 import { LoggerService } from './logger.service';
@@ -54,7 +55,7 @@ import { SecurityMiddleware } from './middleware/security.middleware';
     JobsModule,
     AuthModule
   ],
-  controllers: [UserController],
+  controllers: [UserController, SecurityController],
   providers: [
     UserService,    // SINGLETON scope (default)
     EmailService,   // REQUEST scope
