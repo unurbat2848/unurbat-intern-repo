@@ -24,7 +24,8 @@
     "jest-environment-jsdom": "^29.0.0"
   },
   "jest": {
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!src/index.js",
