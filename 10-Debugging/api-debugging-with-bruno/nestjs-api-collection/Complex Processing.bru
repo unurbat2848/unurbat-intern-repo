@@ -1,0 +1,29 @@
+meta {
+  name: Complex Processing
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:3000/debug/complex-processing/42
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+assert {
+  res.status: eq 200
+  res.body.message: eq "Complex processing completed successfully"
+}
+
+tests {
+  test("should process number and return steps", function() {
+    expect(res.getBody()).to.have.property('result');
+    expect(res.getBody().result).to.have.property('original', 42);
+    expect(res.getBody().result).to.have.property('steps');
+    expect(res.getBody().result.steps).to.be.an('array');
+  });
+}

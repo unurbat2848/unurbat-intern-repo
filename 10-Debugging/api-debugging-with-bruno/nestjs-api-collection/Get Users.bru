@@ -1,0 +1,32 @@
+meta {
+  name: Get Users
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:3000/debug/users
+  body: none
+  auth: none
+}
+
+query {
+  role: user
+}
+
+headers {
+  Accept: application/json
+  User-Agent: Bruno/1.0
+}
+
+assert {
+  res.status: eq 200
+  res.responseTime: lt 1000
+}
+
+tests {
+  test("should return users array", function() {
+    expect(res.getBody()).to.have.property('users');
+    expect(res.getBody().users).to.be.an('array');
+  });
+}

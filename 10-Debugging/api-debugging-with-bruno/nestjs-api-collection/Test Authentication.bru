@@ -1,0 +1,28 @@
+meta {
+  name: Test Authentication
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/debug/test-auth
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+  Accept: application/json
+}
+
+assert {
+  res.status: eq 200
+  res.body.message: eq "Authorization successful"
+}
+
+tests {
+  test("should authenticate successfully with Bearer token", function() {
+    expect(res.getBody()).to.have.property('tokenLength');
+    expect(res.getBody().tokenLength).to.be.greaterThan(0);
+  });
+}

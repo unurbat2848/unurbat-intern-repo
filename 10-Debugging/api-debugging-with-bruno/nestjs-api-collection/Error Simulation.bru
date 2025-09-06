@@ -1,0 +1,27 @@
+meta {
+  name: Error Simulation - Bad Request
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:3000/debug/simulate-error/bad-request
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+assert {
+  res.status: eq 400
+}
+
+tests {
+  test("should return 400 Bad Request", function() {
+    expect(res.status).to.eq(400);
+    expect(res.getBody()).to.have.property('message');
+    expect(res.getBody().message).to.include('bad request');
+  });
+}

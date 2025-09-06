@@ -14,14 +14,11 @@ Here is my DebugController with detailed request logging:
 
 The main tools for API inspection are like different types of magnifying glasses - each one shows you different details. **Postman** is great for manual testing with a user-friendly interface where you can easily set headers, body data, and see formatted responses. **Bruno** is a newer lightweight alternative that's privacy-focused and stores requests as files. **curl** is perfect for command-line testing and automation scripts. In my demo, I also used **NestJS interceptors** which act like built-in API watchers that automatically log every request and response. For browser testing, **Chrome DevTools Network tab** shows all HTTP requests with detailed timing and headers.
 
-Here is a Postman request example:
+Here is a Bruno request example:
 ![alt text](image-2.png)
 
-Here is a curl command example:
-![alt text](image-3.png)
-
 Here is the NestJS server logs showing intercepted requests:
-![alt text](image-4.png)
+![alt text](image-3.png)
 
 ## How would you debug an issue where an API returns the wrong status code?
 
