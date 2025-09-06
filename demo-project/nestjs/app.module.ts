@@ -21,6 +21,7 @@ import { JobsModule } from './jobs/jobs.module';
 import { AuthModule } from './auth/auth.module';
 import { RequestIdMiddleware } from './middleware/request-id.middleware';
 import { SecurityMiddleware } from './middleware/security.middleware';
+import { DebugModule } from './debug/debug.module';
 
 // Module that registers all providers and controllers
 @Module({
@@ -54,6 +55,7 @@ import { SecurityMiddleware } from './middleware/security.middleware';
     // LoggingModule, // Temporarily disabled
     ProductsModule,
     UsersModule,
+    DebugModule,
     // SeedModule, // Temporarily disabled
     // JobsModule, // Temporarily disabled (depends on BullMQ)
     // AuthModule // Temporarily disabled
