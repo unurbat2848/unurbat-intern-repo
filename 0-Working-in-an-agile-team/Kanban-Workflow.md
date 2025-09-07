@@ -15,7 +15,7 @@ As a backend developer, I can improve my workflow by:
 
 ## Focus Bear's Kanban board structure
 
-The repository currently doesn't have an active GitHub Projects board set up. In a typical Focus Bear Kanban setup, tasks would likely move through columns like: Backlog → Ready → In Progress → Code Review → Testing → Done. Tasks would represent features, bug fixes, and improvements to the productivity app.
+In a typical Focus Bear Kanban setup, tasks would likely move through columns like: Backlog → Ready → In Progress → Code Review → Testing → Done. Tasks would represent features, bug fixes, and improvements to the productivity app.
 
 ## Task tracking improvement for backend development
 
