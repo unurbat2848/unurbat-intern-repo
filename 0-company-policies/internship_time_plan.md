@@ -14,55 +14,101 @@ This document outlines my detailed schedule for completing the Focus Bear intern
 
 ## Phase 1: Onboarding Milestones (Weeks 1-6)
 
-### Week 1-2: Foundation & Company Policies
+### Week 1: Milestone 1 - Learn about Focus Bear and Set Goals
 **Focus Areas:**
-- Complete all 10 onboarding milestones
-- Company policy completion (Issues 8, 9, 10, 12, etc.)
-- Development environment setup
-- Git fundamentals review
+- Company understanding and goal setting
+- Competitive landscape research
+- Focus Bear feature exploration
+- Initial onboarding completion
 
 **Schedule:**
 - Monday:
   - 9:00 AM: Backend scrum meeting
-  - 9:30 AM - 12 PM: Company policies and milestone work
-  - 1 PM - 5 PM: Git practice and environment setup
+  - 9:30 AM - 12 PM: Company research and Focus Bear exploration
+  - 1 PM - 5 PM: Goal setting and competitive analysis
 - Friday:
   - 9:00 AM: Backend scrum meeting
-  - 9:30 AM - 12 PM: Milestone completion
+  - 9:30 AM - 12 PM: Complete milestone 1 tasks
   - 1 PM - 5 PM: Documentation and reflection
 
-### Week 3-4: Clean Code & Development Practices
+### Week 2: Milestone 2 & 3 - Tool Setup & Git Fundamentals
 **Focus Areas:**
-- Clean code principles study and practice
-- Code refactoring exercises
-- Testing fundamentals
-- Continue milestone progression
+- Development environment setup (VS Code, Git, Terminal, AI tools)
+- Git fundamentals, branching, and pull requests
+- Tool configuration and workflow establishment
 
 **Schedule:**
 - Monday:
   - 9:00 AM: Backend scrum meeting
-  - 9:30 AM - 1 PM: Clean code study and milestone work
-  - 2 PM - 5 PM: Practical exercises
+  - 9:30 AM - 1 PM: Tool installation and configuration (Milestone 2)
+  - 2 PM - 5 PM: Git basics and repository setup
 - Friday:
   - 9:00 AM: Backend scrum meeting
-  - 9:30 AM - 12 PM: Code review practice
-  - 1 PM - 5 PM: Testing implementation and milestone completion
+  - 9:30 AM - 12 PM: Advanced Git commands and workflows (Milestone 3)
+  - 1 PM - 5 PM: Git practice and milestone completion
 
-### Week 5-6: Docker & Final Milestones
+### Week 3: Milestone 4 & 5 - Clean Code & Docker
 **Focus Areas:**
-- Docker fundamentals
-- PostgreSQL setup and configuration
-- Complete remaining onboarding milestones
+- Clean code principles with practical examples
+- Docker containerization and PostgreSQL setup
+- Code quality best practices
+
+**Schedule:**
+- Monday:
+  - 9:00 AM: Backend scrum meeting
+  - 9:30 AM - 1 PM: Clean code study and principles (Milestone 4)
+  - 2 PM - 5 PM: Practical clean code exercises
+- Friday:
+  - 9:00 AM: Backend scrum meeting
+  - 9:30 AM - 12 PM: Docker fundamentals and setup (Milestone 5)
+  - 1 PM - 5 PM: PostgreSQL configuration and practice
+
+### Week 4: Milestone 6, 7 & 8 - NestJS Fundamentals & API Building
+**Focus Areas:**
+- NestJS framework introduction and architecture
+- Building REST APIs with NestJS
+- Advanced NestJS concepts
+
+**Schedule:**
+- Monday:
+  - 9:00 AM: Backend scrum meeting
+  - 9:30 AM - 1 PM: NestJS basics and architecture (Milestone 6)
+  - 2 PM - 5 PM: Building first NestJS application
+- Friday:
+  - 9:00 AM: Backend scrum meeting
+  - 9:30 AM - 12 PM: REST API creation (Milestone 7)
+  - 1 PM - 5 PM: Advanced API features and authentication (Milestone 8)
+
+### Week 5: Milestone 8 & 9 - Authentication/Security & Testing
+**Focus Areas:**
+- Authentication, security, and logging in NestJS
+- Writing meaningful automated tests
+- Security best practices implementation
+
+**Schedule:**
+- Monday:
+  - 9:00 AM: Backend scrum meeting
+  - 9:30 AM - 1 PM: Complete authentication and security (Milestone 8)
+  - 2 PM - 5 PM: Security implementations and logging setup
+- Friday:
+  - 9:00 AM: Backend scrum meeting
+  - 9:30 AM - 12 PM: Testing fundamentals and implementation (Milestone 9)
+  - 1 PM - 5 PM: Test-driven development practice
+
+### Week 6: Milestone 10 & 0 - Debugging & Company Policies
+**Focus Areas:**
+- Debugging techniques and tools
+- Company policies completion
 - Prepare for Focus Bear project work
 
 **Schedule:**
 - Monday:
   - 9:00 AM: Backend scrum meeting
-  - 9:30 AM - 1 PM: Docker theory and final milestones
-  - 2 PM - 5 PM: Hands-on practice
+  - 9:30 AM - 1 PM: Debugging skills and tools (Milestone 10)
+  - 2 PM - 5 PM: Advanced debugging practice
 - Friday:
   - 9:00 AM: Backend scrum meeting
-  - 9:30 AM - 12 PM: Final milestone completion
+  - 9:30 AM - 12 PM: Company policies completion (Milestone 0)
   - 1 PM - 5 PM: Onboarding wrap-up and Focus Bear project preparation
 
 ## Phase 2: Focus Bear Tasks (Week 7+)
