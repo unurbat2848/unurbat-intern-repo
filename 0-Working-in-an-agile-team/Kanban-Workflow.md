@@ -14,9 +14,11 @@ As a backend developer, I can improve my workflow by:
 - Reviewing my board daily to identify bottlenecks in my development process
 
 ## Focus Bear's Kanban board structure
+Here is the Focus bear's backend kanban board
+![alt text](image-1.png)
 
-In a typical Focus Bear Kanban setup, tasks would likely move through columns like: Backlog → Ready → In Progress → Code Review → Testing → Done. Tasks would represent features, bug fixes, and improvements to the productivity app.
+All tasks have been configured in sprint planning and divided into the following columns on the backend board: 2027, H2 2026, H1 2026, Q1 2026, and Oct 2025. The Blocked column contains all paused tickets that are pending due to external circumstances.
+![alt text](image-2.png)
 
-## Task tracking improvement for backend development
-
-One way I can improve task tracking is to break down backend work into smaller, more specific tasks. Instead of having one large task like "Build user authentication system," I could create separate tasks for "Design user database schema," "Create login API endpoint," "Implement JWT tokens," and "Add password validation." This makes progress more visible and helps identify exactly where I might get stuck.
+Any issues currently arising in Production that require urgent resolution will be placed in the Drop Dead Urgent column. The project manager will assign tickets to developers, and all active work will appear in the In Progress column. Once developers complete their implementation, tickets are moved to the In Review column. After a senior developer reviews and approves them, they are deployed to production and placed in the Deployed Awaiting QA column.
+![alt text](image-3.png)
